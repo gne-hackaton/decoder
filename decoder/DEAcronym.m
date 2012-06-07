@@ -10,22 +10,15 @@
 
 @implementation DEAcronym
 
-@synthesize ac = _ac;
-@synthesize data = _data;
-
-#pragma mark - custom getters/setters
-- (NSArray *) data {
-    if (!_data) {
-        _data = [[NSArray alloc] init];
-    }
-    
-    return _data;
-}
+@synthesize dict = _dict;
+@synthesize ID = _ID;
+@synthesize def = _def;
 
 
 - (void) dealloc {
-    [_ac release];
-    [_data release];
+    [_dict release];
+    [_ID release];
+    [_def release];
     [super dealloc];
 }
 

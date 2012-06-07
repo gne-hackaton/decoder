@@ -10,7 +10,8 @@
 
 @interface DEAcronym : NSObject
 
-@property (nonatomic, copy) NSString *ac;
-@property (nonatomic, retain) NSArray *data;
+@property (nonatomic, copy) NSString *dict;
+@property (nonatomic, copy) NSString *ID;
+@property (nonatomic, copy) NSString *def;
 
 @end
