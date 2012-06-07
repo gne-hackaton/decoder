@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		40E8EEDC15816F15004C116C /* DEAcronym.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E8EEDB15816F15004C116C /* DEAcronym.m */; };
 		486FFC1A15815AC1000AC329 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 486FFC1915815AC1000AC329 /* UIKit.framework */; };
 		486FFC1C15815AC1000AC329 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 486FFC1B15815AC1000AC329 /* Foundation.framework */; };
 		486FFC1E15815AC1000AC329 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 486FFC1D15815AC1000AC329 /* CoreGraphics.framework */; };
@@ -18,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		40E8EEDA15816F15004C116C /* DEAcronym.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DEAcronym.h; sourceTree = "<group>"; };
+		40E8EEDB15816F15004C116C /* DEAcronym.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DEAcronym.m; sourceTree = "<group>"; };
 		486FFC1515815AC1000AC329 /* decoder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = decoder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		486FFC1915815AC1000AC329 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		486FFC1B15815AC1000AC329 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -48,6 +51,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		40E8EED815816DDD004C116C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				40E8EEDA15816F15004C116C /* DEAcronym.h */,
+				40E8EEDB15816F15004C116C /* DEAcronym.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		486FFC0A15815AC1000AC329 = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				486FFC381581629F000AC329 /* backend */,
+				40E8EED815816DDD004C116C /* Model */,
 				486FFC2815815AC1000AC329 /* AppDelegate.h */,
 				486FFC2915815AC1000AC329 /* AppDelegate.m */,
 				486FFC2015815AC1000AC329 /* Supporting Files */,
@@ -174,6 +187,7 @@
 				486FFC2A15815AC1000AC329 /* AppDelegate.m in Sources */,
 				486FFC3615816294000AC329 /* DEJsonRequest.m in Sources */,
 				486FFC3B158171C0000AC329 /* JSONKit.m in Sources */,
+				40E8EEDC15816F15004C116C /* DEAcronym.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
