@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 Roche. All rights reserved.
 //
 #import "AppDelegate.h"
+#import "DEJsonRequest.h"
 
 @implementation AppDelegate
 
