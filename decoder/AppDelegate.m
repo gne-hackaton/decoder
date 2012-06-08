@@ -39,7 +39,7 @@
 	[self initialConfiguration];
 	[self.window makeKeyAndVisible];
 
-    DEJsonRequest *r = [[DEJsonRequest alloc] initWithURL:@"http://10-36-209-202.wifi.gene.com:4567/jsonFakeAcronym"];
+    DEJsonRequest *r = [[DEJsonRequest alloc] initWithURL:@"http://10-36-209-202.wifi.gene.com:4567/search/MBA"];
     [r connect];
 	r.completion = ^(id data) {
 		NSLog(@"acronyms array: %@", data);

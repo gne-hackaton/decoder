@@ -74,7 +74,9 @@
 			else if (error != nil) {
 				NSLog(@"download error: %@", error);
 			}
+			[self autorelease];
 		}];
+	[queue release];
 }
 
 @end
