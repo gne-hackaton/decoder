@@ -1,9 +1,10 @@
 #import "DEAcronymsListTableViewController.h"
 #import "DEAcronym.h"
+#import "DEJsonRequest.h"
 
 @implementation DEAcronymsListTableViewController
 
-@synthesize listContent, filteredListContent, savedSearchTerm, searchWasActive;
+@synthesize listContent, savedSearchTerm, searchWasActive;
 
 
 #pragma mark - 
@@ -12,9 +13,10 @@
 - (void)viewDidLoad
 {
 	self.title = @"DECODER RING";
-	
-	// create a filtered list that will contain products for the search results table.
-	self.filteredListContent = [NSMutableArray arrayWithCapacity:[self.listContent count]];
+    
+    if (!self.listContent) {
+        self.listContent = [[NSArray alloc] init];
+    }
 	
 	// restore search settings if they were saved in didReceiveMemoryWarning.
     if (self.savedSearchTerm)
@@ -28,11 +30,6 @@
 	
 	[self.tableView reloadData];
 	self.tableView.scrollEnabled = YES;
-}
-
-- (void)viewDidUnload
-{
-	self.filteredListContent = nil;
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -57,18 +54,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	/*
-	 If the requesting table view is the search display controller's table view, return the count of
-     the filtered list, otherwise return the count of the main list.
-	 */
-	if (tableView == self.searchDisplayController.searchResultsTableView)
-	{
-        return [self.filteredListContent count];
-    }
-	else
-	{
-        return [self.listContent count];
-    }
+    return [self.listContent count];
 }
 
 
@@ -82,19 +68,10 @@
 		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kCellID] autorelease];
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
-	
-	/*
-	 If the requesting table view is the search display controller's table view, configure the cell using the filtered content, otherwise use the main list.
-	 */
+
 	DEAcronym *acronym = nil;
-	if (tableView == self.searchDisplayController.searchResultsTableView)
-	{
-        acronym = [self.filteredListContent objectAtIndex:indexPath.row];
-    }
-	else
-	{
-        acronym = [self.listContent objectAtIndex:indexPath.row];
-    }
+    NSLog(@"indexPath.row: %d", indexPath.row);
+	acronym = [self.listContent objectAtIndex:indexPath.row];
 	
 	cell.textLabel.text = acronym.name;
 	return cell;
@@ -105,18 +82,9 @@
 {
     UIViewController *detailsViewController = [[UIViewController alloc] init];
     
-	/*
-	 If the requesting table view is the search display controller's table view, configure the next view controller using the filtered content, otherwise use the main list.
-	 */
-	DEAcronym *acronym = nil;
-	if (tableView == self.searchDisplayController.searchResultsTableView)
-	{
-        acronym = [self.filteredListContent objectAtIndex:indexPath.row];
-    }
-	else
-	{
-        acronym = [self.listContent objectAtIndex:indexPath.row];
-    }
+    DEAcronym *acronym = nil;
+	acronym = [self.listContent objectAtIndex:indexPath.row];
+    
 	detailsViewController.title = acronym.name;
     
     [[self navigationController] pushViewController:detailsViewController animated:YES];
@@ -125,64 +93,28 @@
 
 
 #pragma mark -
-#pragma mark Content Filtering
-
-- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
-{
-	/*
-	 Update the filtered array based on the search text and scope.
-	 */
-	
-	[self.filteredListContent removeAllObjects]; // First clear the filtered array.
-	
-	/*
-	 Search the main list for products whose type matches the scope (if selected) and whose name matches searchText; add items that match to the filtered array.
-	 */
-	for (DEAcronym *acronym in listContent)
-	{
-//		if ([scope isEqualToString:@"All"] || [acronym.type isEqualToString:scope])
-//		{
-//			NSComparisonResult result = [acronym.name compare:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchText length])];
-//            if (result == NSOrderedSame)
-//			{
-//				[self.filteredListContent addObject:acronym];
-//            }
-//		}
-	}
-}
-
-
-#pragma mark -
 #pragma mark UISearchDisplayController Delegate Methods
 
-- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
-	searchBar.showsScopeBar = NO;
-//	[searchBar sizeToFit];
-//    
-//	[searchBar setShowsCancelButton:YES animated:YES];
-    
-	return YES;
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
+    NSLog(@"searchBarTextDidEndEditing");
 }
-
-//- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
-//{
-//    [self filterContentForSearchText:searchString scope:
-//			[[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
-//    
-//    // Return YES to cause the search result table view to be reloaded.
-//    return YES;
-//}
-//
-//
-//- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption
-//{
-//    [self filterContentForSearchText:[self.searchDisplayController.searchBar text] scope:
-//			[[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:searchOption]];
-//    
-//    // Return YES to cause the search result table view to be reloaded.
-//    return YES;
-//}
-
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    NSLog(@"textDidChange: %@", searchText);
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    
+    NSString *searchURL = @"http://10-36-209-202.wifi.gene.com:4567/search/";
+    NSString *searchString = [searchURL stringByAppendingString:[searchText capitalizedString]];
+    DEJsonRequest *r = [[DEJsonRequest alloc] initWithURL:searchString];
+    [r connect];
+    
+	r.completion = ^(id data) {
+		NSLog(@"acronyms array: %@", data);
+        self.listContent = data;
+        [self.tableView reloadData];
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+	};
+    [r release];
+}
 
 @end
 

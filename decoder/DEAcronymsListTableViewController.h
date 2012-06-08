@@ -9,7 +9,6 @@
 }
 
 @property (nonatomic, retain) NSArray *listContent;
-@property (nonatomic, retain) NSMutableArray *filteredListContent;
 
 @property (nonatomic, copy) NSString *savedSearchTerm;
 
