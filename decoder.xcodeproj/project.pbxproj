@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		40D9D5D11581CE42000D8EF5 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D9D5D01581CE42000D8EF5 /* Reachability.m */; };
+		40D9D5D41581CE67000D8EF5 /* ConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D9D5D31581CE67000D8EF5 /* ConnectionManager.m */; };
+		40D9D5D71581D0D9000D8EF5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40D9D5D61581D0D9000D8EF5 /* SystemConfiguration.framework */; };
+		40D9D5E515829842000D8EF5 /* DERecentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D9D5E415829842000D8EF5 /* DERecentTableViewController.m */; };
 		40E8EEDC15816F15004C116C /* DEAcronym.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E8EEDB15816F15004C116C /* DEAcronym.m */; };
-		40E8EEF315817DD7004C116C /* DEAcronymsListTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40E8EEF115817DD7004C116C /* DEAcronymsListTableViewController.xib */; };
 		40E8EEF615817DE4004C116C /* DEAcronymsListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E8EEF515817DE4004C116C /* DEAcronymsListTableViewController.m */; };
 		484923B3158295FA005EBB5F /* DERecentsStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 484923B2158295FA005EBB5F /* DERecentsStorage.m */; };
 		486FFC1A15815AC1000AC329 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 486FFC1915815AC1000AC329 /* UIKit.framework */; };
@@ -23,9 +26,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		40D9D5CF1581CE42000D8EF5 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		40D9D5D01581CE42000D8EF5 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		40D9D5D21581CE67000D8EF5 /* ConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionManager.h; sourceTree = "<group>"; };
+		40D9D5D31581CE67000D8EF5 /* ConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionManager.m; sourceTree = "<group>"; };
+		40D9D5D61581D0D9000D8EF5 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		40D9D5E315829842000D8EF5 /* DERecentTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DERecentTableViewController.h; sourceTree = "<group>"; };
+		40D9D5E415829842000D8EF5 /* DERecentTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DERecentTableViewController.m; sourceTree = "<group>"; };
 		40E8EEDA15816F15004C116C /* DEAcronym.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DEAcronym.h; sourceTree = "<group>"; };
 		40E8EEDB15816F15004C116C /* DEAcronym.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DEAcronym.m; sourceTree = "<group>"; };
-		40E8EEF115817DD7004C116C /* DEAcronymsListTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DEAcronymsListTableViewController.xib; sourceTree = "<group>"; };
 		40E8EEF415817DE4004C116C /* DEAcronymsListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DEAcronymsListTableViewController.h; sourceTree = "<group>"; };
 		40E8EEF515817DE4004C116C /* DEAcronymsListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DEAcronymsListTableViewController.m; sourceTree = "<group>"; };
 		484923B1158295FA005EBB5F /* DERecentsStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DERecentsStorage.h; sourceTree = "<group>"; };
@@ -53,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40D9D5D71581D0D9000D8EF5 /* SystemConfiguration.framework in Frameworks */,
 				486FFC1A15815AC1000AC329 /* UIKit.framework in Frameworks */,
 				486FFC1C15815AC1000AC329 /* Foundation.framework in Frameworks */,
 				486FFC1E15815AC1000AC329 /* CoreGraphics.framework in Frameworks */,
@@ -62,6 +72,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		40D9D5D51581CE6D000D8EF5 /* Connectivity */ = {
+			isa = PBXGroup;
+			children = (
+				40D9D5CF1581CE42000D8EF5 /* Reachability.h */,
+				40D9D5D01581CE42000D8EF5 /* Reachability.m */,
+				40D9D5D21581CE67000D8EF5 /* ConnectionManager.h */,
+				40D9D5D31581CE67000D8EF5 /* ConnectionManager.m */,
+			);
+			name = Connectivity;
+			sourceTree = "<group>";
+		};
 		40E8EED815816DDD004C116C /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +99,8 @@
 				40E8EEF515817DE4004C116C /* DEAcronymsListTableViewController.m */,
 				A11409BC15819D5400F7E290 /* DEAcronymsDetailViewController.h */,
 				A11409BD15819D5400F7E290 /* DEAcronymsDetailViewController.m */,
+				40D9D5E315829842000D8EF5 /* DERecentTableViewController.h */,
+				40D9D5E415829842000D8EF5 /* DERecentTableViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -85,7 +108,6 @@
 		40E8EEEF15817CC8004C116C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				40E8EEF115817DD7004C116C /* DEAcronymsListTableViewController.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -110,6 +132,7 @@
 		486FFC1815815AC1000AC329 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				40D9D5D61581D0D9000D8EF5 /* SystemConfiguration.framework */,
 				486FFC1915815AC1000AC329 /* UIKit.framework */,
 				486FFC1B15815AC1000AC329 /* Foundation.framework */,
 				486FFC1D15815AC1000AC329 /* CoreGraphics.framework */,
@@ -120,6 +143,7 @@
 		486FFC1F15815AC1000AC329 /* decoder */ = {
 			isa = PBXGroup;
 			children = (
+				40D9D5D51581CE6D000D8EF5 /* Connectivity */,
 				40E8EEEF15817CC8004C116C /* View */,
 				40E8EEED15817CC0004C116C /* Controller */,
 				486FFC381581629F000AC329 /* backend */,
@@ -207,7 +231,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				486FFC2415815AC1000AC329 /* InfoPlist.strings in Resources */,
-				40E8EEF315817DD7004C116C /* DEAcronymsListTableViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,6 +249,9 @@
 				40E8EEF615817DE4004C116C /* DEAcronymsListTableViewController.m in Sources */,
 				A11409BE15819D5400F7E290 /* DEAcronymsDetailViewController.m in Sources */,
 				484923B3158295FA005EBB5F /* DERecentsStorage.m in Sources */,
+				40D9D5D11581CE42000D8EF5 /* Reachability.m in Sources */,
+				40D9D5D41581CE67000D8EF5 /* ConnectionManager.m in Sources */,
+				40D9D5E515829842000D8EF5 /* DERecentTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -2,48 +2,48 @@
 #import "DEAcronymsDetailViewController.h"
 #import "DEAcronym.h"
 #import "DEJsonRequest.h"
+#import "ConnectionManager.h"
+
+#define SEARCH_URL @"http://10.31.213.107:4567/search/"
 
 @implementation DEAcronymsListTableViewController
 
-@synthesize listContent, savedSearchTerm, searchWasActive;
+@synthesize listContent = _listContent;
 
+#pragma mark - custom getter/setter
+- (NSArray *)listContent {
+    if (!_listContent) {
+        _listContent = [[NSArray alloc] init];
+    }
+    return _listContent;
+}
+
+- (void) setListContent:(NSArray *)listContent {
+    if (listContent != _listContent) {
+        _listContent = [listContent retain];
+        [self.tableView reloadData];
+    }
+}
 
 #pragma mark - 
 #pragma mark Lifecycle methods
 
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
 	self.title = @"DECODER RING";
-    
-    if (!self.listContent) {
-        self.listContent = [[NSArray alloc] init];
-    }
 	
-	// restore search settings if they were saved in didReceiveMemoryWarning.
-    if (self.savedSearchTerm)
-	{
-        [self.searchDisplayController setActive:self.searchWasActive];
-
-        [self.searchDisplayController.searchBar setText:savedSearchTerm];
-        
-        self.savedSearchTerm = nil;
-    }
-	
-	[self.tableView reloadData];
-	self.tableView.scrollEnabled = YES;
+//	self.tableView.scrollEnabled = YES;
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
 }
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-    // save the state of the search UI so that it can be restored if the view is re-created
-    self.searchWasActive = [self.searchDisplayController isActive];
-    self.savedSearchTerm = [self.searchDisplayController.searchBar text];
-
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
 }
 
 - (void)dealloc
 {
-	[listContent release];
+	[_listContent release];
 	
 	[super dealloc];
 }
@@ -54,10 +54,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"numberOfRowsInSection: %d", [self.listContent count]);
     return [self.listContent count];
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -71,7 +69,7 @@
 	}
 
 	DEAcronym *acronym = nil;
-    NSLog(@"indexPath.row: %d", indexPath.row);
+
 	acronym = [self.listContent objectAtIndex:indexPath.row];
 	
 	cell.textLabel.text = acronym.name;
@@ -92,29 +90,77 @@
 	[detailsViewController release];
 }
 
+- (void)showAlertWithMessage: (NSString *)message {
+    UIAlertView *alert = [[UIAlertView alloc]
+                          initWithTitle: @"Whoops!"
+                          message: message
+                          delegate: self
+                          cancelButtonTitle:@"OK"
+                          otherButtonTitles: nil];
+    [alert show];
+    [alert release];
+}
+
+- (NSString *) trimFrontAndEndWhiteSpaces: (NSString *) string {
+    NSString *trimmedString = [string stringByTrimmingCharactersInSet:
+                               [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    return trimmedString;
+}
+
+- (void)searchWithSearchTerm: (NSString *) searchText {
+    if (searchText!=nil && ![searchText isEqualToString:@" "] && ![searchText isEqualToString:@""]) {
+        searchText = [self trimFrontAndEndWhiteSpaces:searchText]; // trim leading white spaces
+        if ([[ConnectionManager sharedSingleton] hasInternetConnection]) {
+            NSLog(@"searchText: %@", searchText);
+            [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+            
+            NSString *searchURL = SEARCH_URL;
+            NSString *searchString = [searchURL stringByAppendingString:[searchText capitalizedString]];
+            DEJsonRequest *r = [[DEJsonRequest alloc] initWithURL:searchString];
+            [r connect];
+            
+            r.completion = ^(id data) {
+                if (data) {
+                    NSLog(@"acronyms array: %@", data);
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        self.listContent = data;
+                    });
+                } else {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self.view endEditing:TRUE];
+                        [self showAlertWithMessage:@"Cannot reach server!"];
+                    });
+                }
+                
+                [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+            };
+            [r release];
+        } else {
+            [self showAlertWithMessage:@"Internet connection is required to use the app"];
+        }
+    } else {
+        self.listContent = nil;
+    }
+}
 
 #pragma mark -
-#pragma mark UISearchDisplayController Delegate Methods
+#pragma mark UISearchBar Delegate Methods
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [self.view endEditing:TRUE];
+}
 
 - (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
     NSLog(@"searchBarTextDidEndEditing");
 }
+
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    NSLog(@"textDidChange: %@", searchText);
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-    
-    NSString *searchURL = @"http://10-36-209-202.wifi.gene.com:4567/search/";
-    NSString *searchString = [searchURL stringByAppendingString:[searchText capitalizedString]];
-    DEJsonRequest *r = [[DEJsonRequest alloc] initWithURL:searchString];
-    [r connect];
-    
-	r.completion = ^(id data) {
-		NSLog(@"acronyms array: %@", data);
-        self.listContent = data;
-        [self.tableView reloadData];
-        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-	};
-    [r release];
+    [self searchWithSearchTerm:searchText];
+}
+
+#pragma mark - UIScrollView Delegate Methods
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [self.view endEditing:TRUE];
 }
 
 @end
