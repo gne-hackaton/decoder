@@ -13,7 +13,8 @@
 @property (nonatomic, copy) NSString *dict;
 @property (nonatomic, copy) NSString *ID;
 @property (nonatomic, copy) NSString *def;
+@property (nonatomic, copy) NSString *name;
 
-+ (id)acronymWithDict: (NSString *)dict ID: (NSString *)ID definition: (NSString *)def;
++ (id)acronymWithName: (NSString *)name dict: (NSString *)dict ID: (NSString *)ID definition: (NSString *)def;
 
 @end

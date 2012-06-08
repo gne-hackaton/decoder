@@ -13,17 +13,20 @@
 @synthesize dict = _dict;
 @synthesize ID = _ID;
 @synthesize def = _def;
+@synthesize name = _name;
 
-+ (id)acronymWithDict: (NSString *)dict ID: (NSString *)ID definition: (NSString *)def {
++ (id)acronymWithName: (NSString *)name dict: (NSString *)dict ID: (NSString *)ID definition: (NSString *)def {
     DEAcronym *acronym = [[[DEAcronym alloc] init] autorelease];
     acronym.dict = dict;
     acronym.ID = ID;
     acronym.def = def;
+    acronym.name = name;
     
     return acronym;
 }
 
 - (void) dealloc {
+    [_name release];
     [_dict release];
     [_ID release];
     [_def release];
