@@ -49,24 +49,20 @@
 				NSDictionary *abbreviations = [data objectFromJSONData];
 				NSDictionary *results = [abbreviations objectForKey:RESULT_KEY];
 				NSLog(@"resuls: %@", results);
-				[results enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-						NSArray *valuesArray = (NSArray *)obj;
-						[valuesArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+				[results enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+						//NSString *acronymName = [valuesDict objectForKey:ACCRONYM_];
+						NSDictionary *acronymDict = (NSDictionary *)obj;
+						NSString *acronymIdentifier = @"not used currently";//[acronymDict objectForKey:ACRONYM_ID];
+						NSString *acronymDefinition = [acronymDict objectForKey:ACRONYM_DEFINITION];
+						NSString *acronymDictionary = [acronymDict objectForKey:ACRONYM_DICTIONARY];
 
-								//NSString *acronymName = [valuesDict objectForKey:ACCRONYM_];
-								NSDictionary *acronymDict = (NSDictionary *)obj;
-								NSString *acronymIdentifier = [acronymDict objectForKey:ACRONYM_ID];
-								NSString *acronymDefinition = [acronymDict objectForKey:ACRONYM_DEFINITION];
-								NSString *acronymDictionary = [acronymDict objectForKey:ACRONYM_DICTIONARY];
-
-								DEAcronym *acronym = [[DEAcronym alloc] initWithName:@"test name" 
-																				dict:acronymDictionary 
-																		   identifer:acronymIdentifier
-																		  definition:acronymDefinition];
-								[acronymsArray addObject:acronym];
-								[acronym release];
-							}];
-                }];
+						DEAcronym *acronym = [[DEAcronym alloc] initWithName:@"test name" 
+																		dict:acronymDictionary 
+																   identifer:acronymIdentifier
+																  definition:acronymDefinition];
+						[acronymsArray addObject:acronym];
+						[acronym release];
+				}];
 				if (completion) {
 					completion(acronymsArray);
 				}
