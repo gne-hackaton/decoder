@@ -32,11 +32,12 @@ for my $term (@$terms) {
 		};
 		push @$values, $v;
 	}
-	my $json = encode_json $values;
-	$json =~ s/[\[\]]//g;
-	print "$name => " . $json;
-	print "\n\n";
-	$redis->set($name => $json)
+	if (@$values) {
+		my $json = encode_json $values;
+		$json =~ s/[\[\]]//g;
+		print "$name => " . $json . "\n";
+		$redis->set($name => $json)
+	}
 }
 
 $dbh->disconnect;
