@@ -16,7 +16,7 @@
 @dynamic recents;
 
 - (id)initStore {
-	return [[DERecentsStorage alloc] initWithSize:DEFAULT_RECENTS_STORE_SIZE];
+	return [[DERecentsStorage alloc] initStoreWithSize:DEFAULT_RECENTS_STORE_SIZE];
 }
 
 - (id)initStoreWithSize:(int)s {
