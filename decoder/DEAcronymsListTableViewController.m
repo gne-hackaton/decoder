@@ -1,14 +1,21 @@
 #import "DEAcronymsListTableViewController.h"
 #import "DEAcronymsDetailViewController.h"
 #import "DEAcronym.h"
-#import "DEJsonRequest.h"
 #import "ConnectionManager.h"
 
-#define SEARCH_URL @"http://10-36-209-202.wifi.gene.com:4567/search/"
+#define SEARCH_URL @"http://10.31.213.107:4567/search/"
 
 @implementation DEAcronymsListTableViewController
 
-@synthesize listContent = _listContent, tableView = _tableView;
+@synthesize listContent = _listContent;
+
+- (UISearchBar *)getSearchBar {
+    UISearchBar *theSearchBar = nil;
+    UIWindow *mainWindow = [[UIApplication sharedApplication] keyWindow];
+    for (UIView *view in mainWindow.subviews)
+        if ([view isKindOfClass:[UISearchBar class]]) theSearchBar = (UISearchBar *) view;
+    return theSearchBar;
+}
 
 #pragma mark - custom getter/setter
 - (NSArray *)listContent {
@@ -20,7 +27,7 @@
 
 - (void) setListContent:(NSArray *)listContent {
     if (listContent != _listContent) {
-        _listContent = listContent;
+        _listContent = [listContent retain];
         [self.tableView reloadData];
     }
 }
@@ -33,7 +40,9 @@
     [super viewDidLoad];
 	self.title = @"DECODER RING";
 	
-	self.tableView.scrollEnabled = YES;
+//	self.tableView.scrollEnabled = YES;
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -42,7 +51,6 @@
 - (void)dealloc
 {
 	[_listContent release];
-    [_tableView release];
 	
 	[super dealloc];
 }
@@ -107,15 +115,18 @@
 }
 
 - (void)searchWithSearchTerm: (NSString *) searchText {
+    if (r) {
+        [r cancel];
+    }
+    
     if (searchText!=nil && ![searchText isEqualToString:@" "] && ![searchText isEqualToString:@""]) {
         searchText = [self trimFrontAndEndWhiteSpaces:searchText]; // trim leading white spaces
         if ([[ConnectionManager sharedSingleton] hasInternetConnection]) {
-            NSLog(@"searchText: %@", searchText);
             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
             
             NSString *searchURL = SEARCH_URL;
             NSString *searchString = [searchURL stringByAppendingString:[searchText capitalizedString]];
-            DEJsonRequest *r = [[DEJsonRequest alloc] initWithURL:searchString];
+            r = [[DEJsonRequest alloc] initWithURL:searchString];
             [r connect];
             
             r.completion = ^(id data) {
@@ -133,10 +144,12 @@
                 
                 [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
             };
-            [r release];
+            
         } else {
             [self showAlertWithMessage:@"Internet connection is required to use the app"];
         }
+    } else {
+        self.listContent = nil;
     }
 }
 

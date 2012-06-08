@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DEAcronym : NSObject
+@interface DEAcronym : NSObject<NSCoding>
 
 @property (nonatomic, copy) NSString *dict;
 @property (nonatomic, copy) NSString *ID;

@@ -10,8 +10,10 @@
 		40D9D5D11581CE42000D8EF5 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D9D5D01581CE42000D8EF5 /* Reachability.m */; };
 		40D9D5D41581CE67000D8EF5 /* ConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D9D5D31581CE67000D8EF5 /* ConnectionManager.m */; };
 		40D9D5D71581D0D9000D8EF5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40D9D5D61581D0D9000D8EF5 /* SystemConfiguration.framework */; };
+		40D9D5E515829842000D8EF5 /* DERecentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D9D5E415829842000D8EF5 /* DERecentTableViewController.m */; };
 		40E8EEDC15816F15004C116C /* DEAcronym.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E8EEDB15816F15004C116C /* DEAcronym.m */; };
 		40E8EEF615817DE4004C116C /* DEAcronymsListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E8EEF515817DE4004C116C /* DEAcronymsListTableViewController.m */; };
+		484923B3158295FA005EBB5F /* DERecentsStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 484923B2158295FA005EBB5F /* DERecentsStorage.m */; };
 		486FFC1A15815AC1000AC329 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 486FFC1915815AC1000AC329 /* UIKit.framework */; };
 		486FFC1C15815AC1000AC329 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 486FFC1B15815AC1000AC329 /* Foundation.framework */; };
 		486FFC1E15815AC1000AC329 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 486FFC1D15815AC1000AC329 /* CoreGraphics.framework */; };
@@ -21,6 +23,7 @@
 		486FFC3615816294000AC329 /* DEJsonRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 486FFC3515816294000AC329 /* DEJsonRequest.m */; };
 		486FFC3B158171C0000AC329 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 486FFC3A158171C0000AC329 /* JSONKit.m */; };
 		A11409BE15819D5400F7E290 /* DEAcronymsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A11409BD15819D5400F7E290 /* DEAcronymsDetailViewController.m */; };
+		A1ACA2351582AAE20044A6D7 /* ZKRevealingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1ACA2341582AAE10044A6D7 /* ZKRevealingTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,10 +32,14 @@
 		40D9D5D21581CE67000D8EF5 /* ConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionManager.h; sourceTree = "<group>"; };
 		40D9D5D31581CE67000D8EF5 /* ConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionManager.m; sourceTree = "<group>"; };
 		40D9D5D61581D0D9000D8EF5 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		40D9D5E315829842000D8EF5 /* DERecentTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DERecentTableViewController.h; sourceTree = "<group>"; };
+		40D9D5E415829842000D8EF5 /* DERecentTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DERecentTableViewController.m; sourceTree = "<group>"; };
 		40E8EEDA15816F15004C116C /* DEAcronym.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DEAcronym.h; sourceTree = "<group>"; };
 		40E8EEDB15816F15004C116C /* DEAcronym.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DEAcronym.m; sourceTree = "<group>"; };
 		40E8EEF415817DE4004C116C /* DEAcronymsListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DEAcronymsListTableViewController.h; sourceTree = "<group>"; };
 		40E8EEF515817DE4004C116C /* DEAcronymsListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DEAcronymsListTableViewController.m; sourceTree = "<group>"; };
+		484923B1158295FA005EBB5F /* DERecentsStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DERecentsStorage.h; sourceTree = "<group>"; };
+		484923B2158295FA005EBB5F /* DERecentsStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DERecentsStorage.m; sourceTree = "<group>"; };
 		486FFC1515815AC1000AC329 /* decoder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = decoder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		486FFC1915815AC1000AC329 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		486FFC1B15815AC1000AC329 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -49,6 +56,8 @@
 		486FFC3A158171C0000AC329 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		A11409BC15819D5400F7E290 /* DEAcronymsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DEAcronymsDetailViewController.h; sourceTree = "<group>"; };
 		A11409BD15819D5400F7E290 /* DEAcronymsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DEAcronymsDetailViewController.m; sourceTree = "<group>"; };
+		A1ACA2331582AAE10044A6D7 /* ZKRevealingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZKRevealingTableViewCell.h; path = vendor/ZKRevealingTableViewCell.h; sourceTree = "<group>"; };
+		A1ACA2341582AAE10044A6D7 /* ZKRevealingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZKRevealingTableViewCell.m; path = vendor/ZKRevealingTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +102,8 @@
 				40E8EEF515817DE4004C116C /* DEAcronymsListTableViewController.m */,
 				A11409BC15819D5400F7E290 /* DEAcronymsDetailViewController.h */,
 				A11409BD15819D5400F7E290 /* DEAcronymsDetailViewController.m */,
+				40D9D5E315829842000D8EF5 /* DERecentTableViewController.h */,
+				40D9D5E415829842000D8EF5 /* DERecentTableViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -108,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				486FFC1F15815AC1000AC329 /* decoder */,
+				A1ACA2321582AACD0044A6D7 /* vendor */,
 				486FFC1815815AC1000AC329 /* Frameworks */,
 				486FFC1615815AC1000AC329 /* Products */,
 			);
@@ -165,8 +177,20 @@
 				486FFC3515816294000AC329 /* DEJsonRequest.m */,
 				486FFC39158171C0000AC329 /* JSONKit.h */,
 				486FFC3A158171C0000AC329 /* JSONKit.m */,
+				484923B1158295FA005EBB5F /* DERecentsStorage.h */,
+				484923B2158295FA005EBB5F /* DERecentsStorage.m */,
 			);
 			name = backend;
+			sourceTree = "<group>";
+		};
+		A1ACA2321582AACD0044A6D7 /* vendor */ = {
+			isa = PBXGroup;
+			children = (
+				A1ACA2331582AAE10044A6D7 /* ZKRevealingTableViewCell.h */,
+				A1ACA2341582AAE10044A6D7 /* ZKRevealingTableViewCell.m */,
+			);
+			name = vendor;
+			path = decoder;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,8 +262,11 @@
 				40E8EEDC15816F15004C116C /* DEAcronym.m in Sources */,
 				40E8EEF615817DE4004C116C /* DEAcronymsListTableViewController.m in Sources */,
 				A11409BE15819D5400F7E290 /* DEAcronymsDetailViewController.m in Sources */,
+				484923B3158295FA005EBB5F /* DERecentsStorage.m in Sources */,
 				40D9D5D11581CE42000D8EF5 /* Reachability.m in Sources */,
 				40D9D5D41581CE67000D8EF5 /* ConnectionManager.m in Sources */,
+				40D9D5E515829842000D8EF5 /* DERecentTableViewController.m in Sources */,
+				A1ACA2351582AAE20044A6D7 /* ZKRevealingTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,7 +7,7 @@
 //
 #import "AppDelegate.h"
 #import "DEAcronymsListTableViewController.h"
-
+#import "DEJsonRequest.h"
 
 @interface AppDelegate(){
 	@private

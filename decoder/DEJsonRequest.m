@@ -25,6 +25,7 @@
 -(id)initWithURL:(NSString *)u {
 	if ((self = [super init])) {
 		urlString = [u copy];
+		cancelled = NO;
 	}
 	return self;
 }
@@ -43,13 +44,20 @@
 	NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
 	NSOperationQueue *queue = [[NSOperationQueue alloc] init];
 	
+	if (cancelled) {
+		return;
+	}
+
 	[NSURLConnection sendAsynchronousRequest:urlRequest queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+			if (cancelled) {
+				return;
+			}
 			if ([data length] > 0 && error == nil) {
 				NSMutableArray *acronymsArray = [NSMutableArray array];
 				
 				NSDictionary *abbreviations = [data objectFromJSONData];
 				NSArray *results = [abbreviations objectForKey:RESULT_KEY];
-				NSLog(@"resuls: %@", results);
+				NSLog(@"results: %@", results);
 				[results enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
 
 						NSDictionary *acronymDict = (NSDictionary *)obj;
@@ -70,12 +78,24 @@
             }
 			else if ([data length] == 0 && error == nil) {
 				NSLog(@"empty reply");
+				if (completion) {
+					completion([NSArray array]);
+				}
 			}
 			else if (error != nil) {
-//				NSLog(@"download error: %@", error);
-                completion(nil); // server not reachable
+				if (failure) {
+					failure(error);
+				}
 			}
+			[self autorelease];
 		}];
+	[queue release];
+}
+
+
+- (void)cancel {
+	cancelled = YES;
+	[self autorelease];
 }
 
 @end

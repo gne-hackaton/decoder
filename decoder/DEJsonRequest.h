@@ -13,6 +13,7 @@
     NSString *urlString;
 	void (^_completion)(id);
 	void (^_failure)(NSError *);
+	BOOL cancelled;
 }
 
 @property (nonatomic, readonly) NSString *urlString;
@@ -21,5 +22,6 @@
 
 -(id)initWithURL:(NSString *)url;
 -(void)connect;
+- (void)cancel;
 
 @end
