@@ -7,7 +7,6 @@
 //
 #import "AppDelegate.h"
 #import "DEAcronymsListTableViewController.h"
-#import "DEAcronym.h"
 #import "DEJsonRequest.h"
 
 @interface AppDelegate(){
@@ -36,35 +35,28 @@
 	self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
 	// Override point for customization after application launch.
 	self.window.backgroundColor = [UIColor whiteColor];
-	[self initialConfiguration];
+	//[self initialConfiguration];
 	[self.window makeKeyAndVisible];
 
-    DEJsonRequest *r = [[DEJsonRequest alloc] initWithURL:@"http://10-36-209-202.wifi.gene.com:4567/search/MBA"];
+    DEJsonRequest *r = [[DEJsonRequest alloc] initWithURL:@"http://10-36-209-202.wifi.gene.com:4567/search/A"];
     [r connect];
 	r.completion = ^(id data) {
-		NSLog(@"acronyms array: %@", data);
+		NSLog(@"test request: %@", data);
 	};
     [r release];
 	return YES;
 }
 
 - (void)initialConfiguration{
-    // Create the master list for the main view controller.
-	NSArray *listContent = [[NSArray alloc] initWithObjects:
-                            [DEAcronym acronymWithName:@"NHL" dict:@"Sports Dictionary" identifier:@"some id" definition:@"National Hockey League"]
-                            , nil];
+    DEAcronymsListTableViewController *acronymsListTableViewController = [[DEAcronymsListTableViewController alloc] initWithNibName:@"DEAcronymsListTableViewController" bundle:nil];
     
     
 	_tabBarController = [[UITabBarController alloc] init];
 	
-	UITabBarItem *homeItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFeatured tag:0];
+	UITabBarItem *homeItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemSearch tag:0];
 	UITabBarItem *favItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFavorites tag:1];
 	UITabBarItem *recentsItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemMostRecent tag:2];
-	
-	
-	DEAcronymsListTableViewController *acronymsListTableViewController = [[DEAcronymsListTableViewController alloc] initWithNibName:@"DEAcronymsListTableViewController" bundle:nil];
-    acronymsListTableViewController.listContent = listContent;
-    [listContent release];
+    
 	
 	UIViewController *favViewController = [[UIViewController alloc] init];
 	UIViewController *recentsViewController = [[UIViewController alloc] init];
