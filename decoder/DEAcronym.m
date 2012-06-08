@@ -15,7 +15,9 @@
 @synthesize def = _def;
 @synthesize name = _name;
 
-+ (id)acronymWithName: (NSString *)name dict: (NSString *)dict identifer: (NSString *)ID definition: (NSString *)def {
+
+
++ (id)acronymWithName: (NSString *)name dict:(NSString *)dict identifier:(NSString *)ID definition: (NSString *)def {
     DEAcronym *acronym = [[[DEAcronym alloc] init] autorelease];
     acronym.dict = dict;
     acronym.ID = ID;
