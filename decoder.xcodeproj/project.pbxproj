@@ -10,6 +10,7 @@
 		40D9D5D11581CE42000D8EF5 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D9D5D01581CE42000D8EF5 /* Reachability.m */; };
 		40D9D5D41581CE67000D8EF5 /* ConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D9D5D31581CE67000D8EF5 /* ConnectionManager.m */; };
 		40D9D5D71581D0D9000D8EF5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40D9D5D61581D0D9000D8EF5 /* SystemConfiguration.framework */; };
+		40D9D5E515829842000D8EF5 /* DERecentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40D9D5E415829842000D8EF5 /* DERecentTableViewController.m */; };
 		40E8EEDC15816F15004C116C /* DEAcronym.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E8EEDB15816F15004C116C /* DEAcronym.m */; };
 		40E8EEF615817DE4004C116C /* DEAcronymsListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40E8EEF515817DE4004C116C /* DEAcronymsListTableViewController.m */; };
 		486FFC1A15815AC1000AC329 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 486FFC1915815AC1000AC329 /* UIKit.framework */; };
@@ -29,6 +30,8 @@
 		40D9D5D21581CE67000D8EF5 /* ConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionManager.h; sourceTree = "<group>"; };
 		40D9D5D31581CE67000D8EF5 /* ConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionManager.m; sourceTree = "<group>"; };
 		40D9D5D61581D0D9000D8EF5 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		40D9D5E315829842000D8EF5 /* DERecentTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DERecentTableViewController.h; sourceTree = "<group>"; };
+		40D9D5E415829842000D8EF5 /* DERecentTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DERecentTableViewController.m; sourceTree = "<group>"; };
 		40E8EEDA15816F15004C116C /* DEAcronym.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DEAcronym.h; sourceTree = "<group>"; };
 		40E8EEDB15816F15004C116C /* DEAcronym.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DEAcronym.m; sourceTree = "<group>"; };
 		40E8EEF415817DE4004C116C /* DEAcronymsListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DEAcronymsListTableViewController.h; sourceTree = "<group>"; };
@@ -93,6 +96,8 @@
 				40E8EEF515817DE4004C116C /* DEAcronymsListTableViewController.m */,
 				A11409BC15819D5400F7E290 /* DEAcronymsDetailViewController.h */,
 				A11409BD15819D5400F7E290 /* DEAcronymsDetailViewController.m */,
+				40D9D5E315829842000D8EF5 /* DERecentTableViewController.h */,
+				40D9D5E415829842000D8EF5 /* DERecentTableViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -240,6 +245,7 @@
 				A11409BE15819D5400F7E290 /* DEAcronymsDetailViewController.m in Sources */,
 				40D9D5D11581CE42000D8EF5 /* Reachability.m in Sources */,
 				40D9D5D41581CE67000D8EF5 /* ConnectionManager.m in Sources */,
+				40D9D5E515829842000D8EF5 /* DERecentTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
