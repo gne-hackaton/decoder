@@ -10,6 +10,7 @@
 
 @synthesize listContent = _listContent, tableView = _tableView;
 
+#pragma mark - custom getter/setter
 - (NSArray *)listContent {
     if (!_listContent) {
         _listContent = [[NSArray alloc] init];
@@ -99,8 +100,15 @@
     [alert release];
 }
 
+- (NSString *) trimFrontAndEndWhiteSpaces: (NSString *) string {
+    NSString *trimmedString = [string stringByTrimmingCharactersInSet:
+                               [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    return trimmedString;
+}
+
 - (void)searchWithSearchTerm: (NSString *) searchText {
     if (searchText!=nil && ![searchText isEqualToString:@" "] && ![searchText isEqualToString:@""]) {
+        searchText = [self trimFrontAndEndWhiteSpaces:searchText]; // trim leading white spaces
         if ([[ConnectionManager sharedSingleton] hasInternetConnection]) {
             NSLog(@"searchText: %@", searchText);
             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
