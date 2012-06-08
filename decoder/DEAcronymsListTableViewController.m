@@ -1,4 +1,5 @@
 #import "DEAcronymsListTableViewController.h"
+#import "DEAcronymsDetailViewController.h"
 #import "DEAcronym.h"
 #import "DEJsonRequest.h"
 
@@ -80,15 +81,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIViewController *detailsViewController = [[UIViewController alloc] init];
-    
+
     DEAcronym *acronym = nil;
 	acronym = [self.listContent objectAtIndex:indexPath.row];
-    
+	DEAcronymsDetailViewController *detailsViewController = [[DEAcronymsDetailViewController alloc] initWithAcronym:acronym];
+
 	detailsViewController.title = acronym.name;
-    
-    [[self navigationController] pushViewController:detailsViewController animated:YES];
-    [detailsViewController release];
+	
+	[[self navigationController] pushViewController:detailsViewController animated:YES];
+	[detailsViewController release];
 }
 
 
