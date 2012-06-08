@@ -6,6 +6,8 @@
 //  Copyright (c) 2012 Roche. All rights reserved.
 //
 #import "AppDelegate.h"
+#import "DEAcronymsListTableViewController.h"
+#import "DEAcronym.h"
 
 @interface AppDelegate(){
 	@private
@@ -38,6 +40,13 @@
 }
 
 - (void)initialConfiguration{
+    // Create the master list for the main view controller.
+	NSArray *listContent = [[NSArray alloc] initWithObjects:
+                            [DEAcronym acronymWithName:@"NHL" dict:@"Sports Dictionary" ID:@"some id" definition:@"National Hockey League"],
+                            [DEAcronym acronymWithName:@"NHL2" dict:@"Sports Dictionary" ID:@"some id2" definition:@"National Hockey League2"]
+                            , nil];
+    
+    
 	_tabBarController = [[UITabBarController alloc] init];
 	
 	UITabBarItem *homeItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFeatured tag:0];
@@ -45,15 +54,14 @@
 	UITabBarItem *recentsItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemMostRecent tag:2];
 	
 	
-	UITableViewController *acronymsListTableViewController = [[UITableViewController alloc] 
-																														initWithStyle:UITableViewStylePlain];
+	DEAcronymsListTableViewController *acronymsListTableViewController = [[DEAcronymsListTableViewController alloc] initWithNibName:@"DEAcronymsListTableViewController" bundle:nil];
+    acronymsListTableViewController.listContent = listContent;
+    [listContent release];
 	
 	UIViewController *favViewController = [[UIViewController alloc] init];
 	UIViewController *recentsViewController = [[UIViewController alloc] init];
 	
-	
-	UINavigationController *homeNavigationController = [[UINavigationController alloc] 
-																											initWithRootViewController:acronymsListTableViewController];
+	UINavigationController *homeNavigationController = [[UINavigationController alloc] initWithRootViewController:acronymsListTableViewController];
 	[homeNavigationController setTabBarItem:homeItem];
 	
 	

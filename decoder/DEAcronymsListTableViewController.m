@@ -1,9 +1,9 @@
-#import "MainViewController.h"
-#import "Product.h"
+#import "DEAcronymsListTableViewController.h"
+#import "DEAcronym.h"
 
-@implementation MainViewController
+@implementation DEAcronymsListTableViewController
 
-@synthesize listContent, filteredListContent, savedSearchTerm, savedScopeButtonIndex, searchWasActive;
+@synthesize listContent, filteredListContent, savedSearchTerm, searchWasActive;
 
 
 #pragma mark - 
@@ -20,7 +20,7 @@
     if (self.savedSearchTerm)
 	{
         [self.searchDisplayController setActive:self.searchWasActive];
-        [self.searchDisplayController.searchBar setSelectedScopeButtonIndex:self.savedScopeButtonIndex];
+
         [self.searchDisplayController.searchBar setText:savedSearchTerm];
         
         self.savedSearchTerm = nil;
@@ -40,7 +40,7 @@
     // save the state of the search UI so that it can be restored if the view is re-created
     self.searchWasActive = [self.searchDisplayController isActive];
     self.savedSearchTerm = [self.searchDisplayController.searchBar text];
-    self.savedScopeButtonIndex = [self.searchDisplayController.searchBar selectedScopeButtonIndex];
+
 }
 
 - (void)dealloc
@@ -86,17 +86,17 @@
 	/*
 	 If the requesting table view is the search display controller's table view, configure the cell using the filtered content, otherwise use the main list.
 	 */
-	Product *product = nil;
+	DEAcronym *acronym = nil;
 	if (tableView == self.searchDisplayController.searchResultsTableView)
 	{
-        product = [self.filteredListContent objectAtIndex:indexPath.row];
+        acronym = [self.filteredListContent objectAtIndex:indexPath.row];
     }
 	else
 	{
-        product = [self.listContent objectAtIndex:indexPath.row];
+        acronym = [self.listContent objectAtIndex:indexPath.row];
     }
 	
-	cell.textLabel.text = product.name;
+	cell.textLabel.text = acronym.name;
 	return cell;
 }
 
@@ -108,16 +108,16 @@
 	/*
 	 If the requesting table view is the search display controller's table view, configure the next view controller using the filtered content, otherwise use the main list.
 	 */
-	Product *product = nil;
+	DEAcronym *acronym = nil;
 	if (tableView == self.searchDisplayController.searchResultsTableView)
 	{
-        product = [self.filteredListContent objectAtIndex:indexPath.row];
+        acronym = [self.filteredListContent objectAtIndex:indexPath.row];
     }
 	else
 	{
-        product = [self.listContent objectAtIndex:indexPath.row];
+        acronym = [self.listContent objectAtIndex:indexPath.row];
     }
-	detailsViewController.title = product.name;
+	detailsViewController.title = acronym.name;
     
     [[self navigationController] pushViewController:detailsViewController animated:YES];
     [detailsViewController release];
@@ -138,16 +138,16 @@
 	/*
 	 Search the main list for products whose type matches the scope (if selected) and whose name matches searchText; add items that match to the filtered array.
 	 */
-	for (Product *product in listContent)
+	for (DEAcronym *acronym in listContent)
 	{
-		if ([scope isEqualToString:@"All"] || [product.type isEqualToString:scope])
-		{
-			NSComparisonResult result = [product.name compare:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchText length])];
-            if (result == NSOrderedSame)
-			{
-				[self.filteredListContent addObject:product];
-            }
-		}
+//		if ([scope isEqualToString:@"All"] || [acronym.type isEqualToString:scope])
+//		{
+//			NSComparisonResult result = [acronym.name compare:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchText length])];
+//            if (result == NSOrderedSame)
+//			{
+//				[self.filteredListContent addObject:acronym];
+//            }
+//		}
 	}
 }
 
@@ -155,24 +155,33 @@
 #pragma mark -
 #pragma mark UISearchDisplayController Delegate Methods
 
-- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
-{
-    [self filterContentForSearchText:searchString scope:
-			[[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
+	searchBar.showsScopeBar = NO;
+//	[searchBar sizeToFit];
+//    
+//	[searchBar setShowsCancelButton:YES animated:YES];
     
-    // Return YES to cause the search result table view to be reloaded.
-    return YES;
+	return YES;
 }
 
-
-- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption
-{
-    [self filterContentForSearchText:[self.searchDisplayController.searchBar text] scope:
-			[[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:searchOption]];
-    
-    // Return YES to cause the search result table view to be reloaded.
-    return YES;
-}
+//- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+//{
+//    [self filterContentForSearchText:searchString scope:
+//			[[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
+//    
+//    // Return YES to cause the search result table view to be reloaded.
+//    return YES;
+//}
+//
+//
+//- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption
+//{
+//    [self filterContentForSearchText:[self.searchDisplayController.searchBar text] scope:
+//			[[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:searchOption]];
+//    
+//    // Return YES to cause the search result table view to be reloaded.
+//    return YES;
+//}
 
 
 @end
