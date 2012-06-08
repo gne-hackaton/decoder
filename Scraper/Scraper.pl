@@ -73,11 +73,19 @@ sub scrapeCategory($$) {
 sub scrapeDefinition($$) {
 	my ($m, $ths) = @_;
 	$m->get($ths->{url});
-	my $html = $m->content;
+	my $html = $m->content;	
 	$html =~ /Alternative Namen(.*?)\<h4/gs;
 	$html = $1;
-	$html =~ /_display\"\>(.*?)\<\/span\>/;
-	my $def = $1;
+	my $def = '';	
+	if ($html =~ /_display\"\>(.*?)\<\/span\>/) {
+		$def = $1;
+	} else {
+		$html = $m->content;
+		$html =~ /Definitionen(.*?)\<h4/gs;
+		$html = $1;
+		$html =~ /_display\"\>(.*?)\<\/span\>/;
+		$def = $1;
+	}
 	my $sth = $dbh->prepare("SELECT * FROM defs WHERE term = ? AND dict_id = ?");
 	$sth->bind_param(1, $ths->{term});
 	$sth->bind_param(2, $ths->{dict_id});
@@ -93,31 +101,6 @@ sub scrapeDefinition($$) {
 		$sth->finish;
 	}
 }
-
-# my $m = WWW::Mechanize->new(autocheck => 1);
-# my $categories = getCategories($m);
-# 
-# my $result = {};
-# 
-# my $i = 0;
-# 
-# for my $dict (@$categories) {
-# 	print ++$i . "...\n";
-# 	$dict->{terms} = scrapeCategory($m, $dict);
-# 	for (@{$dict->{terms}}) {
-# 		my $def = scrapeDefinition($m, $_);
-# 		my $dh = {
-# 			dict => $dict,
-# 			def => $def,
-# 			id => "TEST"
-# 		};
-# 		if (defined $result->{$_}) {
-# 			push @{$result->{$_}}, $dh;
-# 		} else {
-# 			$result->{$_} = [$dh]
-# 		}
-# 	}
-# }
 
 my $opt = $ARGV[0];
 my $m = WWW::Mechanize->new(autocheck => 1);
@@ -142,7 +125,7 @@ if ($opt eq 'dicts') {
 		$dbh->do("UPDATE dicts SET scraped = 1 WHERE id = $id");
 	}
 } elsif ($opt eq 'defs') {
-	my $sth = $dbh->prepare("SELECT * FROM terms WHERE scraped = 0");
+	my $sth = $dbh->prepare("SELECT * FROM terms WHERE scraped = 0 ORDER BY random()");
 	$sth->execute;
 	my $h = $sth->fetchall_arrayref;
 	$sth->finish;

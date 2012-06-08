@@ -6,8 +6,10 @@ use utf8;
 use DBI;
 use Redis;
 
-my $redis = Redis->new(server => '10-36-209-202.wifi.gene.com:6379') or die 'Redis connection failed!';
+my $redis = Redis->new(server => 'mobile-poc01.gene.com:6379') or die 'Redis connection failed!';
 my $dbh = DBI->connect("dbi:SQLite:db.sqlite", "", "") or die 'Database connection failed!';
+
+$redis->flushdb;
 
 my $sth = $dbh->prepare("SELECT * FROM dicts");
 $sth->execute;
@@ -27,7 +29,7 @@ for my $term (@$terms) {
 		my (undef, $text, undef, $dict_id) = @$def;
 		my $v = { 
 			def => $text,
-			name => $name,
+			name => uc($name),
 			dict => $$dicts{$dict_id}{name}
 		};
 		push @$values, $v;
