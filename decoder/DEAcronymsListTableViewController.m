@@ -115,15 +115,13 @@
 }
 
 - (void)searchWithSearchTerm: (NSString *) searchText {
+    if (r) {
+        [r cancel];
+    }
+    
     if (searchText!=nil && ![searchText isEqualToString:@" "] && ![searchText isEqualToString:@""]) {
         searchText = [self trimFrontAndEndWhiteSpaces:searchText]; // trim leading white spaces
         if ([[ConnectionManager sharedSingleton] hasInternetConnection]) {
-            NSLog(@"searchText: %@", searchText);
-            
-            if (r) {
-                [r cancel];
-            }
-            
             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
             
             NSString *searchURL = SEARCH_URL;
