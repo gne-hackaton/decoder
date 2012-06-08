@@ -23,6 +23,7 @@
 		486FFC3615816294000AC329 /* DEJsonRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 486FFC3515816294000AC329 /* DEJsonRequest.m */; };
 		486FFC3B158171C0000AC329 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 486FFC3A158171C0000AC329 /* JSONKit.m */; };
 		A11409BE15819D5400F7E290 /* DEAcronymsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A11409BD15819D5400F7E290 /* DEAcronymsDetailViewController.m */; };
+		A1ACA2351582AAE20044A6D7 /* ZKRevealingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1ACA2341582AAE10044A6D7 /* ZKRevealingTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,8 @@
 		486FFC3A158171C0000AC329 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		A11409BC15819D5400F7E290 /* DEAcronymsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DEAcronymsDetailViewController.h; sourceTree = "<group>"; };
 		A11409BD15819D5400F7E290 /* DEAcronymsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DEAcronymsDetailViewController.m; sourceTree = "<group>"; };
+		A1ACA2331582AAE10044A6D7 /* ZKRevealingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZKRevealingTableViewCell.h; path = vendor/ZKRevealingTableViewCell.h; sourceTree = "<group>"; };
+		A1ACA2341582AAE10044A6D7 /* ZKRevealingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZKRevealingTableViewCell.m; path = vendor/ZKRevealingTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				486FFC1F15815AC1000AC329 /* decoder */,
+				A1ACA2321582AACD0044A6D7 /* vendor */,
 				486FFC1815815AC1000AC329 /* Frameworks */,
 				486FFC1615815AC1000AC329 /* Products */,
 			);
@@ -177,6 +181,16 @@
 				484923B2158295FA005EBB5F /* DERecentsStorage.m */,
 			);
 			name = backend;
+			sourceTree = "<group>";
+		};
+		A1ACA2321582AACD0044A6D7 /* vendor */ = {
+			isa = PBXGroup;
+			children = (
+				A1ACA2331582AAE10044A6D7 /* ZKRevealingTableViewCell.h */,
+				A1ACA2341582AAE10044A6D7 /* ZKRevealingTableViewCell.m */,
+			);
+			name = vendor;
+			path = decoder;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -252,6 +266,7 @@
 				40D9D5D11581CE42000D8EF5 /* Reachability.m in Sources */,
 				40D9D5D41581CE67000D8EF5 /* ConnectionManager.m in Sources */,
 				40D9D5E515829842000D8EF5 /* DERecentTableViewController.m in Sources */,
+				A1ACA2351582AAE20044A6D7 /* ZKRevealingTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
