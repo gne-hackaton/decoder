@@ -16,6 +16,8 @@
 		486FFC2415815AC1000AC329 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 486FFC2215815AC1000AC329 /* InfoPlist.strings */; };
 		486FFC2615815AC1000AC329 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 486FFC2515815AC1000AC329 /* main.m */; };
 		486FFC2A15815AC1000AC329 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 486FFC2915815AC1000AC329 /* AppDelegate.m */; };
+		486FFC3615816294000AC329 /* DEJsonRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 486FFC3515816294000AC329 /* DEJsonRequest.m */; };
+		486FFC3B158171C0000AC329 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 486FFC3A158171C0000AC329 /* JSONKit.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,10 @@
 		486FFC2715815AC1000AC329 /* decoder-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "decoder-Prefix.pch"; sourceTree = "<group>"; };
 		486FFC2815815AC1000AC329 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		486FFC2915815AC1000AC329 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		486FFC3415816294000AC329 /* DEJsonRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DEJsonRequest.h; sourceTree = "<group>"; };
+		486FFC3515816294000AC329 /* DEJsonRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DEJsonRequest.m; sourceTree = "<group>"; };
+		486FFC39158171C0000AC329 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		486FFC3A158171C0000AC329 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +114,7 @@
 			children = (
 				40E8EEEF15817CC8004C116C /* View */,
 				40E8EEED15817CC0004C116C /* Controller */,
+				486FFC381581629F000AC329 /* backend */,
 				40E8EED815816DDD004C116C /* Model */,
 				486FFC2815815AC1000AC329 /* AppDelegate.h */,
 				486FFC2915815AC1000AC329 /* AppDelegate.m */,
@@ -125,6 +132,17 @@
 				486FFC2715815AC1000AC329 /* decoder-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		486FFC381581629F000AC329 /* backend */ = {
+			isa = PBXGroup;
+			children = (
+				486FFC3415816294000AC329 /* DEJsonRequest.h */,
+				486FFC3515816294000AC329 /* DEJsonRequest.m */,
+				486FFC39158171C0000AC329 /* JSONKit.h */,
+				486FFC3A158171C0000AC329 /* JSONKit.m */,
+			);
+			name = backend;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,6 +210,8 @@
 			files = (
 				486FFC2615815AC1000AC329 /* main.m in Sources */,
 				486FFC2A15815AC1000AC329 /* AppDelegate.m in Sources */,
+				486FFC3615816294000AC329 /* DEJsonRequest.m in Sources */,
+				486FFC3B158171C0000AC329 /* JSONKit.m in Sources */,
 				40E8EEDC15816F15004C116C /* DEAcronym.m in Sources */,
 				40E8EEF615817DE4004C116C /* DEAcronymsListTableViewController.m in Sources */,
 			);

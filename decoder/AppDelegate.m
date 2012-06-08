@@ -8,6 +8,7 @@
 #import "AppDelegate.h"
 #import "DEAcronymsListTableViewController.h"
 #import "DEAcronym.h"
+#import "DEJsonRequest.h"
 
 @interface AppDelegate(){
 	@private
@@ -31,11 +32,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
 	self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
 	// Override point for customization after application launch.
 	self.window.backgroundColor = [UIColor whiteColor];
 	[self initialConfiguration];
 	[self.window makeKeyAndVisible];
+
+    DEJsonRequest *r = [[DEJsonRequest alloc] initWithURL:@"http://10-36-209-202.wifi.gene.com:4567/jsonFake"];
+    [r connect];
+    [r release];
 	return YES;
 }
 
