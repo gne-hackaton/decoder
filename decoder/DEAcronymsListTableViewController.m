@@ -1,7 +1,6 @@
 #import "DEAcronymsListTableViewController.h"
 #import "DEAcronymsDetailViewController.h"
 #import "DEAcronym.h"
-#import "DEJsonRequest.h"
 #import "ConnectionManager.h"
 
 #define SEARCH_URL @"http://10.31.213.107:4567/search/"
@@ -9,6 +8,14 @@
 @implementation DEAcronymsListTableViewController
 
 @synthesize listContent = _listContent;
+
+- (UISearchBar *)getSearchBar {
+    UISearchBar *theSearchBar = nil;
+    UIWindow *mainWindow = [[UIApplication sharedApplication] keyWindow];
+    for (UIView *view in mainWindow.subviews)
+        if ([view isKindOfClass:[UISearchBar class]]) theSearchBar = (UISearchBar *) view;
+    return theSearchBar;
+}
 
 #pragma mark - custom getter/setter
 - (NSArray *)listContent {
@@ -108,15 +115,18 @@
 }
 
 - (void)searchWithSearchTerm: (NSString *) searchText {
+    if (r) {
+        [r cancel];
+    }
+    
     if (searchText!=nil && ![searchText isEqualToString:@" "] && ![searchText isEqualToString:@""]) {
         searchText = [self trimFrontAndEndWhiteSpaces:searchText]; // trim leading white spaces
         if ([[ConnectionManager sharedSingleton] hasInternetConnection]) {
-            NSLog(@"searchText: %@", searchText);
             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
             
             NSString *searchURL = SEARCH_URL;
             NSString *searchString = [searchURL stringByAppendingString:[searchText capitalizedString]];
-            DEJsonRequest *r = [[DEJsonRequest alloc] initWithURL:searchString];
+            r = [[DEJsonRequest alloc] initWithURL:searchString];
             [r connect];
             
             r.completion = ^(id data) {
@@ -134,7 +144,7 @@
                 
                 [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
             };
-            [r release];
+            
         } else {
             [self showAlertWithMessage:@"Internet connection is required to use the app"];
         }

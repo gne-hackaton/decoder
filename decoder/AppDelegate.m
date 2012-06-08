@@ -35,15 +35,8 @@
 	self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
 	// Override point for customization after application launch.
 	self.window.backgroundColor = [UIColor whiteColor];
-	//[self initialConfiguration];
+	[self initialConfiguration];
 	[self.window makeKeyAndVisible];
-
-    DEJsonRequest *r = [[DEJsonRequest alloc] initWithURL:@"http://10-36-209-202.wifi.gene.com:4567/search/A"];
-    [r connect];
-	r.completion = ^(id data) {
-		NSLog(@"test request: %@", data);
-	};
-    [r release];
 	return YES;
 }
 
