@@ -8,28 +8,85 @@
 #import "AppDelegate.h"
 #import "DEJsonRequest.h"
 
-@implementation AppDelegate
+@interface AppDelegate(){
+	@private
+	UISplitViewController *_splitViewController;
+	UITabBarController *_tabBarController;
+	}
 
+- (void)initialConfiguration;
+@end
+
+@implementation AppDelegate
 @synthesize window = _window;
 
 - (void)dealloc
 {
-    [_window release];
-    [super dealloc];
+	[_splitViewController release];
+	[_tabBarController release];
+	[_window release];
+	[super dealloc];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];
     
-    
-    // DEJsonRequest *r = [[DEJsonRequest alloc] initWithURL:@"http://10-36-209-202.wifi.gene.com:4567/jsonFake"];
-    // [r connect];
-    // [r release];
-    return YES;
+	self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+	// Override point for customization after application launch.
+	self.window.backgroundColor = [UIColor whiteColor];
+	[self initialConfiguration];
+	[self.window makeKeyAndVisible];
+
+    DEJsonRequest *r = [[DEJsonRequest alloc] initWithURL:@"http://10-36-209-202.wifi.gene.com:4567/jsonFake"];
+    [r connect];
+    [r release];
+	return YES;
+}
+
+- (void)initialConfiguration{
+	_tabBarController = [[UITabBarController alloc] init];
+	
+	UITabBarItem *homeItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFeatured tag:0];
+	UITabBarItem *favItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFavorites tag:1];
+	UITabBarItem *recentsItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemMostRecent tag:2];
+	
+	
+	UITableViewController *acronymsListTableViewController = [[UITableViewController alloc] 
+																														initWithStyle:UITableViewStylePlain];
+	
+	UIViewController *favViewController = [[UIViewController alloc] init];
+	UIViewController *recentsViewController = [[UIViewController alloc] init];
+	
+	
+	UINavigationController *homeNavigationController = [[UINavigationController alloc] 
+																											initWithRootViewController:acronymsListTableViewController];
+	[homeNavigationController setTabBarItem:homeItem];
+	
+	
+	UINavigationController *favNavigationController = [[UINavigationController alloc] initWithRootViewController:favViewController];
+	[favNavigationController setTabBarItem:favItem];
+	
+	UINavigationController *recentsNavigationController = [[UINavigationController alloc] initWithRootViewController:recentsViewController];
+	[recentsNavigationController setTabBarItem:recentsItem];
+	
+	
+	NSMutableArray *navBarElements = [NSMutableArray arrayWithObjects:homeNavigationController,favNavigationController,
+																		recentsNavigationController,nil];
+	
+	[_tabBarController setViewControllers:navBarElements];
+	[[self window] setRootViewController:_tabBarController];
+	
+	[acronymsListTableViewController release];
+	[favViewController release];
+	[recentsViewController release];
+	
+	[homeNavigationController release];
+	[favNavigationController release];
+	[recentsNavigationController release];
+	
+	[homeItem release];
+	[favItem release];
+	[recentsItem release];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

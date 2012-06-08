@@ -13,25 +13,39 @@
 @synthesize dict = _dict;
 @synthesize ID = _ID;
 @synthesize def = _def;
+@synthesize name = _name;
+
++ (id)acronymWithName: (NSString *)name dict: (NSString *)dict identifer: (NSString *)ID definition: (NSString *)def {
+    DEAcronym *acronym = [[[DEAcronym alloc] init] autorelease];
+    acronym.dict = dict;
+    acronym.ID = ID;
+    acronym.def = def;
+    acronym.name = name;
+    
+    return acronym;
+}
+
 
 - (void) dealloc {
+    [_name release];
     [_dict release];
     [_ID release];
     [_def release];
     [super dealloc];
 }
 
-- (id)initWithDict:(NSString *)dct id:(NSString *)identifier def:(NSString *)definition {
+- (id)initWithName:(NSString *)name dict:(NSString *)dct identifer:(NSString *)identifier definition:(NSString *)definition {
 	if ((self = [super init])) {
 		self.dict = dct;
 		self.ID = identifier;
 		self.def = definition;
+		self.name = name;
 	}
 	return self;
 }
 
 - (NSString *)description {
-	return [NSString stringWithFormat:@"dict: %@, ID: %@, def: %@", _dict, _ID, _def];
+	return [NSString stringWithFormat:@"name: %@, dict: %@, ID: %@, def: %@",_name,  _dict, _ID, _def];
 }
 
 @end
