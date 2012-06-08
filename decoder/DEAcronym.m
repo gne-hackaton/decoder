@@ -67,6 +67,22 @@
 	return self;
 }
 
+
+-(BOOL)isEqual:(id)anObject {
+	if(!([[self class] isEqual: [anObject class]]))
+	   return NO;
+	DEAcronym *ac = (DEAcronym *)anObject;
+
+	if(!([_dict isEqual: ac.dict]) || 
+	   !([_ID isEqual: ac.ID]) || 
+	   !([_def isEqual: ac.def]) || 
+	   !([_name isEqual: ac.name]))
+	   return NO;
+
+	return YES;
+}
+
+
 - (NSString *)description {
 	return [NSString stringWithFormat:@"name: %@, dict: %@, ID: %@, def: %@",_name,  _dict, _ID, _def];
 }
