@@ -9,6 +9,7 @@
 #import "DEJsonRequest.h"
 #import "JSONKit.h"
 
+#define RESULT_KEY @"result"
 
 @implementation DEJsonRequest
 
@@ -38,9 +39,15 @@
 	
 	[NSURLConnection sendAsynchronousRequest:urlRequest queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
 			if ([data length] > 0 && error == nil) {
+				NSMutableArray *abbreviationsArray = [NSMutableArray array];
+				
 				NSDictionary *abbreviations = [data objectFromJSONData];
 				NSLog(@"data: %@", abbreviations);
-			}
+				NSDictionary *results = [abbreviations objectForKey:RESULT_KEY];
+				[results enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+						
+                }];
+            }
 			else if ([data length] == 0 && error == nil) {
 				NSLog(@"empty reply");
 			}
