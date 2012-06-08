@@ -48,8 +48,7 @@
 - (void)initialConfiguration{
     // Create the master list for the main view controller.
 	NSArray *listContent = [[NSArray alloc] initWithObjects:
-                            [DEAcronym acronymWithName:@"NHL" dict:@"Sports Dictionary" ID:@"some id" definition:@"National Hockey League"],
-                            [DEAcronym acronymWithName:@"NHL2" dict:@"Sports Dictionary" ID:@"some id2" definition:@"National Hockey League2"]
+                            [DEAcronym acronymWithName:@"NHL" dict:@"Sports Dictionary" identifier:@"some id" definition:@"National Hockey League"]
                             , nil];
     
     
