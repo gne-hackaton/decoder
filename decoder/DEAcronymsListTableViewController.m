@@ -44,7 +44,6 @@
 - (void)dealloc
 {
 	[listContent release];
-	[filteredListContent release];
 	
 	[super dealloc];
 }
@@ -55,6 +54,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    NSLog(@"numberOfRowsInSection: %d", [self.listContent count]);
     return [self.listContent count];
 }
 
