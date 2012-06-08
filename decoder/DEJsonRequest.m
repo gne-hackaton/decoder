@@ -79,7 +79,7 @@
 			else if ([data length] == 0 && error == nil) {
 				NSLog(@"empty reply");
 				if (completion) {
-					completion(acronymsArray);
+					completion([NSArray array]);
 				}
 			}
 			else if (error != nil) {
