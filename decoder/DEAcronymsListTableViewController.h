@@ -4,15 +4,13 @@
 	NSMutableArray	*filteredListContent;	// The content filtered as a result of a search.
 	
 	// The saved state of the search UI if a memory warning removed the view.
-    NSString		*savedSearchTerm;
+    NSString	*savedSearchTerm;
     BOOL			searchWasActive;
 }
 
 @property (nonatomic, retain) NSArray *listContent;
 @property (nonatomic, retain) NSMutableArray *filteredListContent;
-
 @property (nonatomic, copy) NSString *savedSearchTerm;
-
 @property (nonatomic) BOOL searchWasActive;
 
 @end

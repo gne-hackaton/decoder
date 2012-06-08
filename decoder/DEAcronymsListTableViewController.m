@@ -1,4 +1,5 @@
 #import "DEAcronymsListTableViewController.h"
+#import "DEAcronymsDetailViewController.h"
 #import "DEAcronym.h"
 
 @implementation DEAcronymsListTableViewController
@@ -103,7 +104,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIViewController *detailsViewController = [[UIViewController alloc] init];
     
 	/*
 	 If the requesting table view is the search display controller's table view, configure the next view controller using the filtered content, otherwise use the main list.
@@ -117,10 +117,11 @@
 	{
         acronym = [self.listContent objectAtIndex:indexPath.row];
     }
+	DEAcronymsDetailViewController *detailsViewController = [[DEAcronymsDetailViewController alloc] initWithAcronym:acronym];
 	detailsViewController.title = acronym.name;
-    
-    [[self navigationController] pushViewController:detailsViewController animated:YES];
-    [detailsViewController release];
+	
+	[[self navigationController] pushViewController:detailsViewController animated:YES];
+	[detailsViewController release];
 }
 
 

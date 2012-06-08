@@ -18,13 +18,14 @@
 		486FFC2A15815AC1000AC329 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 486FFC2915815AC1000AC329 /* AppDelegate.m */; };
 		486FFC3615816294000AC329 /* DEJsonRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 486FFC3515816294000AC329 /* DEJsonRequest.m */; };
 		486FFC3B158171C0000AC329 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 486FFC3A158171C0000AC329 /* JSONKit.m */; };
+		A11409BE15819D5400F7E290 /* DEAcronymsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A11409BD15819D5400F7E290 /* DEAcronymsDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		40E8EEDA15816F15004C116C /* DEAcronym.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DEAcronym.h; sourceTree = "<group>"; };
 		40E8EEDB15816F15004C116C /* DEAcronym.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DEAcronym.m; sourceTree = "<group>"; };
 		40E8EEF115817DD7004C116C /* DEAcronymsListTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DEAcronymsListTableViewController.xib; sourceTree = "<group>"; };
-		40E8EEF415817DE4004C116C /* DEAcronymsListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = DEAcronymsListTableViewController.h; sourceTree = "<group>"; };
+		40E8EEF415817DE4004C116C /* DEAcronymsListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DEAcronymsListTableViewController.h; sourceTree = "<group>"; };
 		40E8EEF515817DE4004C116C /* DEAcronymsListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DEAcronymsListTableViewController.m; sourceTree = "<group>"; };
 		486FFC1515815AC1000AC329 /* decoder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = decoder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		486FFC1915815AC1000AC329 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -40,6 +41,8 @@
 		486FFC3515816294000AC329 /* DEJsonRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DEJsonRequest.m; sourceTree = "<group>"; };
 		486FFC39158171C0000AC329 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		486FFC3A158171C0000AC329 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		A11409BC15819D5400F7E290 /* DEAcronymsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DEAcronymsDetailViewController.h; sourceTree = "<group>"; };
+		A11409BD15819D5400F7E290 /* DEAcronymsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DEAcronymsDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +73,8 @@
 			children = (
 				40E8EEF415817DE4004C116C /* DEAcronymsListTableViewController.h */,
 				40E8EEF515817DE4004C116C /* DEAcronymsListTableViewController.m */,
+				A11409BC15819D5400F7E290 /* DEAcronymsDetailViewController.h */,
+				A11409BD15819D5400F7E290 /* DEAcronymsDetailViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -214,6 +219,7 @@
 				486FFC3B158171C0000AC329 /* JSONKit.m in Sources */,
 				40E8EEDC15816F15004C116C /* DEAcronym.m in Sources */,
 				40E8EEF615817DE4004C116C /* DEAcronymsListTableViewController.m in Sources */,
+				A11409BE15819D5400F7E290 /* DEAcronymsDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
