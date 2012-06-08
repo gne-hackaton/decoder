@@ -92,15 +92,7 @@
 	[detailsViewController release];
 }
 
-
-#pragma mark -
-#pragma mark UISearchDisplayController Delegate Methods
-
-- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
-    NSLog(@"searchBarTextDidEndEditing");
-}
-- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    NSLog(@"textDidChange: %@", searchText);
+- (void)searchWithSearchText: (NSString *)searchText {
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     
     NSString *searchURL = @"http://10-36-209-202.wifi.gene.com:4567/search/";
@@ -109,12 +101,30 @@
     [r connect];
     
 	r.completion = ^(id data) {
-		NSLog(@"acronyms array: %@", data);
+//		NSLog(@"acronyms array: %@", data);
         self.listContent = data;
         [self.tableView reloadData];
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 	};
     [r release];
+}
+
+#pragma mark -
+#pragma mark UISearchDisplayController Delegate Methods
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    NSLog(@"searchBarSearchButtonClicked");
+    [self.view endEditing:TRUE];
+    [self searchWithSearchText:searchBar.text];
+    
+}
+
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
+    NSLog(@"searchBarTextDidEndEditing");
+}
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    NSLog(@"textDidChange: %@", searchText);
+    [self searchWithSearchText:searchText];
 }
 
 @end
