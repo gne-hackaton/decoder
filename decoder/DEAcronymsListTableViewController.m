@@ -2,6 +2,7 @@
 #import "DEAcronymsDetailViewController.h"
 #import "DEAcronym.h"
 #import "DEJsonRequest.h"
+#import "ConnectionManager.h"
 
 #define SEARCH_URL @"http://10-36-209-202.wifi.gene.com:4567/search/"
 
@@ -28,9 +29,13 @@
 
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
 	self.title = @"DECODER RING";
 	
 	self.tableView.scrollEnabled = YES;
+}
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
 }
 
 - (void)dealloc
@@ -83,20 +88,48 @@
 	[detailsViewController release];
 }
 
+- (void)showAlertWithMessage: (NSString *)message {
+    UIAlertView *alert = [[UIAlertView alloc]
+                          initWithTitle: @"Whoops!"
+                          message: message
+                          delegate: self
+                          cancelButtonTitle:@"OK"
+                          otherButtonTitles: nil];
+    [alert show];
+    [alert release];
+}
+
 - (void)searchWithSearchTerm: (NSString *) searchText {
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-    
-    NSString *searchURL = SEARCH_URL;
-    NSString *searchString = [searchURL stringByAppendingString:[searchText capitalizedString]];
-    DEJsonRequest *r = [[DEJsonRequest alloc] initWithURL:searchString];
-    [r connect];
-    
-	r.completion = ^(id data) {
-		NSLog(@"acronyms array: %@", data);
-        self.listContent = data;
-        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-	};
-    [r release];
+    if (searchText!=nil && ![searchText isEqualToString:@" "] && ![searchText isEqualToString:@""]) {
+        if ([[ConnectionManager sharedSingleton] hasInternetConnection]) {
+            NSLog(@"searchText: %@", searchText);
+            [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+            
+            NSString *searchURL = SEARCH_URL;
+            NSString *searchString = [searchURL stringByAppendingString:[searchText capitalizedString]];
+            DEJsonRequest *r = [[DEJsonRequest alloc] initWithURL:searchString];
+            [r connect];
+            
+            r.completion = ^(id data) {
+                if (data) {
+                    NSLog(@"acronyms array: %@", data);
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        self.listContent = data;
+                    });
+                } else {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self.view endEditing:TRUE];
+                        [self showAlertWithMessage:@"Cannot reach server!"];
+                    });
+                }
+                
+                [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+            };
+            [r release];
+        } else {
+            [self showAlertWithMessage:@"Internet connection is required to use the app"];
+        }
+    }
 }
 
 #pragma mark -

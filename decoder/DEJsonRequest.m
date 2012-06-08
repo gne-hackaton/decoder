@@ -72,7 +72,8 @@
 				NSLog(@"empty reply");
 			}
 			else if (error != nil) {
-				NSLog(@"download error: %@", error);
+//				NSLog(@"download error: %@", error);
+                completion(nil); // server not reachable
 			}
 		}];
 }
