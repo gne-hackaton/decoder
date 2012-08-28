@@ -3,7 +3,7 @@
 #import "DEAcronym.h"
 #import "ConnectionManager.h"
 
-#define SEARCH_URL @"http://10.31.213.107:4567/search/"
+#define SEARCH_URL @"http://mobile-poc01.gene.com:4567/search/"
 
 @implementation DEAcronymsListTableViewController
 
