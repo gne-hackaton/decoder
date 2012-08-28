@@ -8,6 +8,10 @@
 #import "AppDelegate.h"
 #import "DEAcronymsListTableViewController.h"
 #import "DEJsonRequest.h"
+#import "GANTracker.h"
+
+#define GAN_DISPATCH_SECONDS 10
+#define GAN_ACCOUNT_ID @"UA-33977349-1"
 
 @interface AppDelegate(){
 	@private
@@ -19,6 +23,7 @@
 @end
 
 @implementation AppDelegate
+
 @synthesize window = _window;
 
 - (void)dealloc
@@ -31,13 +36,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
 	self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
 	// Override point for customization after application launch.
 	self.window.backgroundColor = [UIColor whiteColor];
 	[self initialConfiguration];
 	[self.window makeKeyAndVisible];
-	return YES;
+
+    [[GANTracker sharedTracker] startTrackerWithAccountID:GAN_ACCOUNT_ID dispatchPeriod:GAN_DISPATCH_SECONDS delegate:nil];
+    
+    return YES;
 }
 
 - (void)initialConfiguration{
@@ -114,13 +121,8 @@
      */
 }
 
-- (void)applicationWillTerminate:(UIApplication *)application
-{
-    /*
-     Called when the application is about to terminate.
-     Save data if appropriate.
-     See also applicationDidEnterBackground:.
-     */
+- (void)applicationWillTerminate:(UIApplication *)application {
+    [[GANTracker sharedTracker] stopTracker];
 }
 
 @end

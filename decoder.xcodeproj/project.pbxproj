@@ -23,6 +23,9 @@
 		486FFC3615816294000AC329 /* DEJsonRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 486FFC3515816294000AC329 /* DEJsonRequest.m */; };
 		486FFC3B158171C0000AC329 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 486FFC3A158171C0000AC329 /* JSONKit.m */; };
 		730F4EA215ED116700A8126B /* DEAcronymsListTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 730F4EA115ED116700A8126B /* DEAcronymsListTableViewController.xib */; };
+		730F4EA515ED17C400A8126B /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 730F4EA415ED17C400A8126B /* CFNetwork.framework */; };
+		730F4EA715ED17D200A8126B /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 730F4EA615ED17D200A8126B /* libsqlite3.0.dylib */; };
+		730F4EA915ED181C00A8126B /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 730F4EA815ED181C00A8126B /* libGoogleAnalytics.a */; };
 		A11409BE15819D5400F7E290 /* DEAcronymsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A11409BD15819D5400F7E290 /* DEAcronymsDetailViewController.m */; };
 		A1ACA2351582AAE20044A6D7 /* ZKRevealingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1ACA2341582AAE10044A6D7 /* ZKRevealingTableViewCell.m */; };
 /* End PBXBuildFile section */
@@ -56,6 +59,10 @@
 		486FFC39158171C0000AC329 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		486FFC3A158171C0000AC329 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		730F4EA115ED116700A8126B /* DEAcronymsListTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DEAcronymsListTableViewController.xib; sourceTree = "<group>"; };
+		730F4EA415ED17C400A8126B /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		730F4EA615ED17D200A8126B /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		730F4EA815ED181C00A8126B /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalytics.a; path = decoder/vendor/libGoogleAnalytics.a; sourceTree = "<group>"; };
+		730F4EAA15ED182600A8126B /* GANTracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GANTracker.h; path = vendor/GANTracker.h; sourceTree = "<group>"; };
 		A11409BC15819D5400F7E290 /* DEAcronymsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DEAcronymsDetailViewController.h; sourceTree = "<group>"; };
 		A11409BD15819D5400F7E290 /* DEAcronymsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DEAcronymsDetailViewController.m; sourceTree = "<group>"; };
 		A1ACA2331582AAE10044A6D7 /* ZKRevealingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZKRevealingTableViewCell.h; path = vendor/ZKRevealingTableViewCell.h; sourceTree = "<group>"; };
@@ -67,10 +74,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				730F4EA715ED17D200A8126B /* libsqlite3.0.dylib in Frameworks */,
+				730F4EA515ED17C400A8126B /* CFNetwork.framework in Frameworks */,
 				40D9D5D71581D0D9000D8EF5 /* SystemConfiguration.framework in Frameworks */,
 				486FFC1A15815AC1000AC329 /* UIKit.framework in Frameworks */,
 				486FFC1C15815AC1000AC329 /* Foundation.framework in Frameworks */,
 				486FFC1E15815AC1000AC329 /* CoreGraphics.framework in Frameworks */,
+				730F4EA915ED181C00A8126B /* libGoogleAnalytics.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,6 +149,9 @@
 		486FFC1815815AC1000AC329 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				730F4EA815ED181C00A8126B /* libGoogleAnalytics.a */,
+				730F4EA615ED17D200A8126B /* libsqlite3.0.dylib */,
+				730F4EA415ED17C400A8126B /* CFNetwork.framework */,
 				40D9D5D61581D0D9000D8EF5 /* SystemConfiguration.framework */,
 				486FFC1915815AC1000AC329 /* UIKit.framework */,
 				486FFC1B15815AC1000AC329 /* Foundation.framework */,
@@ -189,6 +202,7 @@
 		A1ACA2321582AACD0044A6D7 /* vendor */ = {
 			isa = PBXGroup;
 			children = (
+				730F4EAA15ED182600A8126B /* GANTracker.h */,
 				A1ACA2331582AAE10044A6D7 /* ZKRevealingTableViewCell.h */,
 				A1ACA2341582AAE10044A6D7 /* ZKRevealingTableViewCell.m */,
 			);
@@ -337,6 +351,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "decoder/decoder-Prefix.pch";
 				INFOPLIST_FILE = "decoder/decoder-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/decoder/vendor\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -348,6 +366,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "decoder/decoder-Prefix.pch";
 				INFOPLIST_FILE = "decoder/decoder-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/decoder/vendor\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
