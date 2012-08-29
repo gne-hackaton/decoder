@@ -7,11 +7,13 @@
 //
 #import "AppDelegate.h"
 #import "DEAcronymsListTableViewController.h"
+#import "DERecentViewController.h"
+#import "DEFavoritesViewController.h"
 #import "DEJsonRequest.h"
 #import "GANTracker.h"
 
-#define GAN_DISPATCH_SECONDS 10
-#define GAN_ACCOUNT_ID @"UA-33977349-1"
+#define GAN_DISPATCH_SECONDS 5
+#define GAN_ACCOUNT_ID @"UA-34386951-1"
 
 @interface AppDelegate(){
 	@private
@@ -43,13 +45,12 @@
 	[self.window makeKeyAndVisible];
 
     [[GANTracker sharedTracker] startTrackerWithAccountID:GAN_ACCOUNT_ID dispatchPeriod:GAN_DISPATCH_SECONDS delegate:nil];
+    [[GANTracker sharedTracker] trackPageview:@"App Launch" withError:NULL];
     
     return YES;
 }
 
 - (void)initialConfiguration{
-    DEAcronymsListTableViewController *acronymsListTableViewController = [[DEAcronymsListTableViewController alloc] initWithNibName:@"DEAcronymsListTableViewController" bundle:nil];
-    
     
 	_tabBarController = [[UITabBarController alloc] init];
 	
@@ -58,8 +59,9 @@
 	UITabBarItem *recentsItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemMostRecent tag:2];
     
 	
-	UIViewController *favViewController = [[UIViewController alloc] init];
-	UIViewController *recentsViewController = [[UIViewController alloc] init];
+    UIViewController *acronymsListTableViewController = [[DEAcronymsListTableViewController alloc] initWithNibName:@"DEAcronymsListTableViewController" bundle:nil];
+	UIViewController *favViewController = [[DEFavoritesViewController alloc] init];
+	UIViewController *recentsViewController = [[DERecentViewController alloc] init];
 	
 	UINavigationController *homeNavigationController = [[UINavigationController alloc] initWithRootViewController:acronymsListTableViewController];
 	[homeNavigationController setTabBarItem:homeItem];

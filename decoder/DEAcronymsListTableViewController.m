@@ -2,6 +2,7 @@
 #import "DEAcronymsDetailViewController.h"
 #import "DEAcronym.h"
 #import "ConnectionManager.h"
+#import "GANTracker.h"
 
 #define SEARCH_URL @"http://mobile-poc01.gene.com:4567/search/"
 
@@ -46,6 +47,7 @@
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    [[GANTracker sharedTracker] trackPageview:@"Search View" withError:NULL];
 }
 
 - (void)dealloc
@@ -120,6 +122,7 @@
     }
     
     if (searchText!=nil && ![searchText isEqualToString:@" "] && ![searchText isEqualToString:@""]) {
+        [[GANTracker sharedTracker] trackEvent:@"Acronym" action:@"Search" label:searchText value:-1 withError:NULL];
         searchText = [self trimFrontAndEndWhiteSpaces:searchText]; // trim leading white spaces
         if ([[ConnectionManager sharedSingleton] hasInternetConnection]) {
             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];

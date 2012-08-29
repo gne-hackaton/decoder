@@ -26,6 +26,11 @@
 		730F4EA515ED17C400A8126B /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 730F4EA415ED17C400A8126B /* CFNetwork.framework */; };
 		730F4EA715ED17D200A8126B /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 730F4EA615ED17D200A8126B /* libsqlite3.0.dylib */; };
 		730F4EA915ED181C00A8126B /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 730F4EA815ED181C00A8126B /* libGoogleAnalytics.a */; };
+		730F4EB615EE2AA200A8126B /* DEFavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 730F4EB515EE2AA100A8126B /* DEFavoritesViewController.m */; };
+		730F4EBA15EE2AF600A8126B /* DERecentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 730F4EB915EE2AF600A8126B /* DERecentViewController.m */; };
+		730F4EBC15EE322000A8126B /* icon-iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 730F4EBB15EE322000A8126B /* icon-iphone.png */; };
+		730F4EBE15EE322400A8126B /* icon-iphone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 730F4EBD15EE322400A8126B /* icon-iphone@2x.png */; };
+		730F4EC315EE431600A8126B /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 730F4EC215EE431600A8126B /* iTunesArtwork */; };
 		A11409BE15819D5400F7E290 /* DEAcronymsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A11409BD15819D5400F7E290 /* DEAcronymsDetailViewController.m */; };
 		A1ACA2351582AAE20044A6D7 /* ZKRevealingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1ACA2341582AAE10044A6D7 /* ZKRevealingTableViewCell.m */; };
 /* End PBXBuildFile section */
@@ -63,6 +68,13 @@
 		730F4EA615ED17D200A8126B /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		730F4EA815ED181C00A8126B /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalytics.a; path = decoder/vendor/libGoogleAnalytics.a; sourceTree = "<group>"; };
 		730F4EAA15ED182600A8126B /* GANTracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GANTracker.h; path = vendor/GANTracker.h; sourceTree = "<group>"; };
+		730F4EB415EE2AA100A8126B /* DEFavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DEFavoritesViewController.h; sourceTree = "<group>"; };
+		730F4EB515EE2AA100A8126B /* DEFavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DEFavoritesViewController.m; sourceTree = "<group>"; };
+		730F4EB815EE2AF600A8126B /* DERecentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DERecentViewController.h; sourceTree = "<group>"; };
+		730F4EB915EE2AF600A8126B /* DERecentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DERecentViewController.m; sourceTree = "<group>"; };
+		730F4EBB15EE322000A8126B /* icon-iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-iphone.png"; path = "../icon-iphone.png"; sourceTree = "<group>"; };
+		730F4EBD15EE322400A8126B /* icon-iphone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-iphone@2x.png"; path = "../icon-iphone@2x.png"; sourceTree = "<group>"; };
+		730F4EC215EE431600A8126B /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = SOURCE_ROOT; };
 		A11409BC15819D5400F7E290 /* DEAcronymsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DEAcronymsDetailViewController.h; sourceTree = "<group>"; };
 		A11409BD15819D5400F7E290 /* DEAcronymsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DEAcronymsDetailViewController.m; sourceTree = "<group>"; };
 		A1ACA2331582AAE10044A6D7 /* ZKRevealingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZKRevealingTableViewCell.h; path = vendor/ZKRevealingTableViewCell.h; sourceTree = "<group>"; };
@@ -117,6 +129,10 @@
 				A11409BD15819D5400F7E290 /* DEAcronymsDetailViewController.m */,
 				40D9D5E315829842000D8EF5 /* DERecentTableViewController.h */,
 				40D9D5E415829842000D8EF5 /* DERecentTableViewController.m */,
+				730F4EB415EE2AA100A8126B /* DEFavoritesViewController.h */,
+				730F4EB515EE2AA100A8126B /* DEFavoritesViewController.m */,
+				730F4EB815EE2AF600A8126B /* DERecentViewController.h */,
+				730F4EB915EE2AF600A8126B /* DERecentViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -170,6 +186,7 @@
 				40E8EED815816DDD004C116C /* Model */,
 				486FFC2815815AC1000AC329 /* AppDelegate.h */,
 				486FFC2915815AC1000AC329 /* AppDelegate.m */,
+				730F4EBF15EE3D9D00A8126B /* Resources */,
 				486FFC2015815AC1000AC329 /* Supporting Files */,
 			);
 			path = decoder;
@@ -197,6 +214,16 @@
 				484923B2158295FA005EBB5F /* DERecentsStorage.m */,
 			);
 			name = backend;
+			sourceTree = "<group>";
+		};
+		730F4EBF15EE3D9D00A8126B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				730F4EC215EE431600A8126B /* iTunesArtwork */,
+				730F4EBD15EE322400A8126B /* icon-iphone@2x.png */,
+				730F4EBB15EE322000A8126B /* icon-iphone.png */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		A1ACA2321582AACD0044A6D7 /* vendor */ = {
@@ -263,6 +290,9 @@
 			files = (
 				486FFC2415815AC1000AC329 /* InfoPlist.strings in Resources */,
 				730F4EA215ED116700A8126B /* DEAcronymsListTableViewController.xib in Resources */,
+				730F4EBC15EE322000A8126B /* icon-iphone.png in Resources */,
+				730F4EBE15EE322400A8126B /* icon-iphone@2x.png in Resources */,
+				730F4EC315EE431600A8126B /* iTunesArtwork in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +315,8 @@
 				40D9D5D41581CE67000D8EF5 /* ConnectionManager.m in Sources */,
 				40D9D5E515829842000D8EF5 /* DERecentTableViewController.m in Sources */,
 				A1ACA2351582AAE20044A6D7 /* ZKRevealingTableViewCell.m in Sources */,
+				730F4EB615EE2AA200A8126B /* DEFavoritesViewController.m in Sources */,
+				730F4EBA15EE2AF600A8126B /* DERecentViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

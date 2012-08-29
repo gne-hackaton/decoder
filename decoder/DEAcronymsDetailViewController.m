@@ -8,6 +8,7 @@
 
 #import "DEAcronymsDetailViewController.h"
 #import "DEAcronym.h"
+#import "GANTracker.h"
 
 
 @interface DEAcronymsDetailViewController(){
@@ -39,6 +40,11 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [[GANTracker sharedTracker] trackEvent:@"Acronym" action:@"Details" label:_acronym.name value:-1 withError:NULL];
+}
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
@@ -62,11 +68,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
