@@ -75,6 +75,7 @@
 		730F4EBB15EE322000A8126B /* icon-iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-iphone.png"; path = "../icon-iphone.png"; sourceTree = "<group>"; };
 		730F4EBD15EE322400A8126B /* icon-iphone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-iphone@2x.png"; path = "../icon-iphone@2x.png"; sourceTree = "<group>"; };
 		730F4EC215EE431600A8126B /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = SOURCE_ROOT; };
+		730F4EC415EE4EE400A8126B /* decoder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = decoder.entitlements; sourceTree = "<group>"; };
 		A11409BC15819D5400F7E290 /* DEAcronymsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DEAcronymsDetailViewController.h; sourceTree = "<group>"; };
 		A11409BD15819D5400F7E290 /* DEAcronymsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DEAcronymsDetailViewController.m; sourceTree = "<group>"; };
 		A1ACA2331582AAE10044A6D7 /* ZKRevealingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZKRevealingTableViewCell.h; path = vendor/ZKRevealingTableViewCell.h; sourceTree = "<group>"; };
@@ -195,6 +196,7 @@
 		486FFC2015815AC1000AC329 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				730F4EC415EE4EE400A8126B /* decoder.entitlements */,
 				486FFC2115815AC1000AC329 /* decoder-Info.plist */,
 				486FFC2215815AC1000AC329 /* InfoPlist.strings */,
 				486FFC2515815AC1000AC329 /* main.m */,
@@ -380,6 +382,7 @@
 		486FFC2E15815AC1000AC329 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = decoder/decoder.entitlements;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "decoder/decoder-Prefix.pch";
 				INFOPLIST_FILE = "decoder/decoder-Info.plist";
@@ -395,6 +398,9 @@
 		486FFC2F15815AC1000AC329 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = decoder/decoder.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "decoder/decoder-Prefix.pch";
 				INFOPLIST_FILE = "decoder/decoder-Info.plist";
@@ -403,6 +409,8 @@
 					"\"$(SRCROOT)/decoder/vendor\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
